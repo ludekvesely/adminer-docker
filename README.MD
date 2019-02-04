@@ -1,8 +1,10 @@
-# Docker Adminer with env login
+# Docker Adminer with env login and tables-filter
+
+> This Docker image is fork of https://github.com/michalhosna/adminer-docker. I only updated Adminer to the latest version and added `tables-filter` plugin.
 
 [Adminer](https://www.adminer.org) docker image with extended env variables for autologin.
 
-Docker hub: http://hub.docker.com/r/michalhosna/adminer
+Docker hub: https://hub.docker.com/r/ludekvesely/adminer
 
 ## Exapmle:
 ```yaml
@@ -10,7 +12,7 @@ version: '2.4'
 
 services:
     adminer:
-        image: michalhosna/adminer:master
+        image: ludekvesely/adminer
         ports:
             - 8080:8080
         environment:

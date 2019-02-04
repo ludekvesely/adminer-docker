@@ -7,9 +7,12 @@ if (basename($_SERVER['REQUEST_URI']) === 'adminer.css' && is_readable('adminer.
     exit;
 }
 
-function adminer_object(): Adminer
+function adminer_object(): AdminerPlugin
 {
-    return new class extends Adminer
+    require __DIR__ . '/plugin.php';
+    require __DIR__ . '/tables-filter.php';
+
+    return new class([new AdminerTablesFilter]) extends AdminerPlugin
     {
         public function name(): ?string
         {

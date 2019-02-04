@@ -23,7 +23,11 @@ ARG ADMINER_FLAVOUR="-en"
 ARG ADMINER_CHECKSUM="7897ac51d8e50c550acae4204d0139cb2a5d0b6c11ca506978b237f8fe540fd1"
 
 RUN curl -L https://github.com/vrana/adminer/releases/download/v${ADMINER_VERSION}/adminer-${ADMINER_VERSION}${ADMINER_FLAVOUR}.php -o adminer.php && \
-    echo "${ADMINER_CHECKSUM}  adminer.php"|sha256sum -c -
+    echo "${ADMINER_CHECKSUM}  adminer.php"|sha256sum -c - && \
+    wget https://raw.github.com/vrana/adminer/master/plugins/plugin.php && \
+    test -s plugin.php && \
+    wget https://raw.github.com/vrana/adminer/master/plugins/tables-filter.php && \
+    test -s tables-filter.php
 
 COPY index.php /var/adminer/index.php
 

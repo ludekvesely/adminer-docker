@@ -30,6 +30,7 @@ RUN curl -L https://github.com/vrana/adminer/releases/download/v${ADMINER_VERSIO
     test -s tables-filter.php
 
 COPY index.php /var/adminer/index.php
+COPY adminer.css /var/adminer/adminer.css
 
 EXPOSE 8080
 
